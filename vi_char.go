@@ -2,12 +2,17 @@ package telex
 
 var (
 	subRules = map[string]rune{
+		"a":  'a',
 		"aw": 'ă',
 		"aa": 'â',
 		"dd": 'đ',
+		"e":  'e',
 		"ee": 'ê',
+		"i":  'i',
+		"o":  'o',
 		"oo": 'ô',
 		"ow": 'ơ',
+		"u":  'u',
 		"uw": 'ư',
 	}
 
@@ -44,7 +49,11 @@ type viChar struct {
 }
 
 func (c *viChar) toRune() rune {
-	mainWithSub := string(c.main) + string(c.sub)
+	mainWithSub := string(c.main)
+	if c.sub != 0 {
+		mainWithSub += string(c.sub)
+	}
+
 	result, ok := subRules[mainWithSub]
 	if !ok {
 		// main + sub is not valid

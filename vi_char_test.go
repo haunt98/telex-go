@@ -29,6 +29,14 @@ func TestViCharToRune(t *testing.T) {
 			},
 			want: 'ầ',
 		},
+		{
+			name: "é",
+			c: viChar{
+				main: 'e',
+				mask: 's',
+			},
+			want: 'é',
+		},
 	}
 
 	for _, tc := range tests {
