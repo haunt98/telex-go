@@ -7,6 +7,7 @@ var allowedPlusRunes = map[rune]struct{}{
 	'i': {},
 	'o': {},
 	'u': {},
+	'y': {},
 }
 
 func ConvertText(text string) string {

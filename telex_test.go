@@ -17,6 +17,11 @@ func TestConverText(t *testing.T) {
 			text: "toans hocj",
 			want: "toán học",
 		},
+		{
+			name: "vaatj lys",
+			text: "vaatj lys",
+			want: "vật lý",
+		},
 	}
 
 	for _, tc := range tests {
