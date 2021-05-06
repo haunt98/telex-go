@@ -78,9 +78,9 @@ func (c *viChar) toRune() rune {
 
 // c represent ắ
 // c + f = ắ + f = ằ
-// return true if plus do not cause side effect
-// otherwise return false
-// side effect: c + s = ắ + s =  ăs
+// return true if r is disappeared
+// return false if r is still exist after plus
+// example: c + s = ắ + s =  ăs
 func (c *viChar) plus(r rune) bool {
 	// ắ + w = (a, w, s) + w = (a, 0, s) + w = áw
 	if r == c.sub {
