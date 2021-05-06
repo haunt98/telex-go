@@ -49,6 +49,7 @@ type viChar struct {
 }
 
 func (c *viChar) toRune() rune {
+	// Prevent rune 0 convert to string
 	mainWithSub := string(c.main)
 	if c.sub != 0 {
 		mainWithSub += string(c.sub)
