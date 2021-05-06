@@ -20,12 +20,21 @@ func TestConvertViChar(t *testing.T) {
 			},
 			want: 'ă',
 		},
+		{
+			name: "ầ",
+			c: viChar{
+				main: 'a',
+				sub:  'a',
+				mask: 'f',
+			},
+			want: 'ầ',
+		},
 	}
 
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
 			got := converViChar(tc.c)
-			assert.Equal(t, tc.want, got)
+			assert.Equal(t, string(tc.want), string(got))
 		})
 	}
 }
