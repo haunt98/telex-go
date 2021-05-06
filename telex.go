@@ -38,6 +38,8 @@ var (
 	}
 )
 
+// main + sub + mask = vietnamese char
+// a + w + s = ắ
 type viChar struct {
 	main rune
 	sub  rune
