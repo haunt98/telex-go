@@ -11,18 +11,18 @@ var (
 		"uw": 'ư',
 	}
 
-	maskRules = map[rune][]rune{
-		'a': {'a', 'à', 'á', 'ả', 'ã', 'ạ'},
-		'ă': {'ă', 'ằ', 'ắ', 'ẳ', 'ẵ', 'ặ'},
-		'â': {'â', 'ầ', 'ấ', 'ẩ', 'ẫ', 'ậ'},
-		'e': {'e', 'è', 'é', 'ẻ', 'ẽ', 'ẹ'},
-		'ê': {'ê', 'ề', 'ế', 'ể', 'ễ', 'ệ'},
-		'i': {'i', 'ì', 'í', 'ỉ', 'ĩ', 'ị'},
-		'o': {'o', 'ò', 'ó', 'ỏ', 'õ', 'ọ'},
-		'ô': {'ô', 'ồ', 'ố', 'ổ', 'ỗ', 'ộ'},
-		'ơ': {'ơ', 'ờ', 'ớ', 'ở', 'ỡ', 'ợ'},
-		'u': {'u', 'ù', 'ú', 'ủ', 'ũ', 'ụ'},
-		'ư': {'ư', 'ừ', 'ứ', 'ử', 'ữ', 'ự'},
+	maskRules = map[string][]rune{
+		"a":  {'a', 'à', 'á', 'ả', 'ã', 'ạ'},
+		"aw": {'ă', 'ằ', 'ắ', 'ẳ', 'ẵ', 'ặ'},
+		"aa": {'â', 'ầ', 'ấ', 'ẩ', 'ẫ', 'ậ'},
+		"e":  {'e', 'è', 'é', 'ẻ', 'ẽ', 'ẹ'},
+		"ee": {'ê', 'ề', 'ế', 'ể', 'ễ', 'ệ'},
+		"i":  {'i', 'ì', 'í', 'ỉ', 'ĩ', 'ị'},
+		"o":  {'o', 'ò', 'ó', 'ỏ', 'õ', 'ọ'},
+		"oo": {'ô', 'ồ', 'ố', 'ổ', 'ỗ', 'ộ'},
+		"ow": {'ơ', 'ờ', 'ớ', 'ở', 'ỡ', 'ợ'},
+		"u":  {'u', 'ù', 'ú', 'ủ', 'ũ', 'ụ'},
+		"uw": {'ư', 'ừ', 'ứ', 'ử', 'ữ', 'ự'},
 	}
 
 	maskOrders = map[rune]int{
@@ -44,11 +44,8 @@ type viChar struct {
 }
 
 func (c *viChar) toRune() rune {
-	if c.sub == 0 {
-		return c.main
-	}
-
-	result, ok := subRules[string(c.main)+string(c.sub)]
+	mainWithSub := string(c.main) + string(c.sub)
+	result, ok := subRules[mainWithSub]
 	if !ok {
 		// main + sub is not valid
 		// fallback to main
@@ -59,7 +56,7 @@ func (c *viChar) toRune() rune {
 		return result
 	}
 
-	maskRule, ok := maskRules[result]
+	maskRule, ok := maskRules[mainWithSub]
 	if !ok {
 		// main + sub not in mask rules
 		// fallback to result
