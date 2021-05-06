@@ -33,7 +33,7 @@ func TestConvertViChar(t *testing.T) {
 
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
-			got := converViChar(tc.c)
+			got := tc.c.toRune()
 			assert.Equal(t, string(tc.want), string(got))
 		})
 	}

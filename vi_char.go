@@ -43,7 +43,7 @@ type viChar struct {
 	mask rune
 }
 
-func converViChar(c viChar) rune {
+func (c *viChar) toRune() rune {
 	if c.sub == 0 {
 		return c.main
 	}
