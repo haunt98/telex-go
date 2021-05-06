@@ -6,7 +6,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestConvertViChar(t *testing.T) {
+func TestViCharToRune(t *testing.T) {
 	tests := []struct {
 		name string
 		c    viChar
