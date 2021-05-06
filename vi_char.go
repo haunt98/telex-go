@@ -94,5 +94,10 @@ func (c *viChar) plus(r rune) bool {
 		return false
 	}
 
+	if _, ok := subRules[string(c.main)+string(c.sub)]; ok {
+		c.sub = r
+		return true
+	}
+
 	return false
 }
