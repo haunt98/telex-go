@@ -1,6 +1,3 @@
-// Implement TELEX
-//
-
 package telex
 
 func ConvertText(text string) string {

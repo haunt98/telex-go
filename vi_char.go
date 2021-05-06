@@ -130,6 +130,13 @@ func (c *viChar) plus(r rune) bool {
 		return false
 	}
 
+	// Special case
+	// á + z = a
+	// a + z = az
+	if r == 'z' && c.mask == 0 {
+		return false
+	}
+
 	// main + sub + mask(r) is valid
 	c.mask = r
 	return true
