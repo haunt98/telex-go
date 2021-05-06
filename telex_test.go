@@ -22,6 +22,11 @@ func TestConverText(t *testing.T) {
 			text: "vaatj lys",
 			want: "vật lý",
 		},
+		{
+			name: "lijch suwr",
+			text: "lijch suwr",
+			want: "lịch sử",
+		},
 	}
 
 	for _, tc := range tests {
