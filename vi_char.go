@@ -75,3 +75,24 @@ func (c *viChar) toRune() rune {
 
 	return maskRule[maskOrder]
 }
+
+// c represent ắ
+// c + f = ắ + f = ằ
+// return true if plus do not cause side effect
+// otherwise return false
+// side effect: c + s = ắ + s =  ăs
+func (c *viChar) plus(r rune) bool {
+	// ắ + w = (a, w, s) + w = (a, 0, s) + w = áw
+	if r == c.sub {
+		c.sub = 0
+		return false
+	}
+
+	// ắ + s = (a, w, s) + s = (a, w, 0) + s = ăs
+	if r == c.mask {
+		c.mask = 0
+		return false
+	}
+
+	return false
+}

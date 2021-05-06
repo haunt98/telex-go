@@ -38,3 +38,36 @@ func TestConvertViChar(t *testing.T) {
 		})
 	}
 }
+
+func TestViCharPlus(t *testing.T) {
+	tests := []struct {
+		name  string
+		c     viChar
+		r     rune
+		wantC viChar
+		want  bool
+	}{
+		{
+			name: "ắ + w",
+			c: viChar{
+				main: 'a',
+				sub:  'w',
+				mask: 's',
+			},
+			r: 'w',
+			wantC: viChar{
+				main: 'a',
+				mask: 's',
+			},
+			want: false,
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			got := tc.c.plus(tc.r)
+			assert.Equal(t, tc.wantC, tc.c)
+			assert.Equal(t, tc.want, got)
+		})
+	}
+}
