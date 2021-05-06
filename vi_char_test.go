@@ -83,6 +83,73 @@ func TestViCharPlus(t *testing.T) {
 			},
 			want: false,
 		},
+		{
+			name: "a + w",
+			c: viChar{
+				main: 'a',
+			},
+			r: 'w',
+			wantC: viChar{
+				main: 'a',
+				sub:  'w',
+			},
+			want: true,
+		},
+		{
+			name: "á + w",
+			c: viChar{
+				main: 'a',
+				mask: 's',
+			},
+			r: 'w',
+			wantC: viChar{
+				main: 'a',
+				sub:  'w',
+				mask: 's',
+			},
+			want: true,
+		},
+		{
+			name: "a + s",
+			c: viChar{
+				main: 'a',
+			},
+			r: 's',
+			wantC: viChar{
+				main: 'a',
+				mask: 's',
+			},
+			want: true,
+		},
+		{
+			name: "ă + s",
+			c: viChar{
+				main: 'a',
+				sub:  'w',
+			},
+			r: 's',
+			wantC: viChar{
+				main: 'a',
+				sub:  'w',
+				mask: 's',
+			},
+			want: true,
+		},
+		{
+			name: "ằ + s",
+			c: viChar{
+				main: 'a',
+				sub:  'w',
+				mask: 'f',
+			},
+			r: 's',
+			wantC: viChar{
+				main: 'a',
+				sub:  'w',
+				mask: 's',
+			},
+			want: true,
+		},
 	}
 
 	for _, tc := range tests {
