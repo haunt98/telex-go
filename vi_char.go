@@ -101,10 +101,36 @@ func (c *viChar) plus(r rune) bool {
 		return false
 	}
 
-	if _, ok := subRules[string(c.main)+string(c.sub)]; ok {
+	// check if r is sub
+
+	mainWithR := string(c.main)
+	if r != 0 {
+		mainWithR += string(r)
+	}
+	if _, ok := subRules[mainWithR]; ok {
+		// main + sub(r) is valid
 		c.sub = r
 		return true
 	}
 
-	return false
+	// check if r is mask
+
+	mainWithSub := string(c.main)
+	if c.sub != 0 {
+		mainWithSub += string(c.sub)
+	}
+
+	if _, ok := maskRules[mainWithSub]; !ok {
+		// main + sub is not valid for mask
+		return false
+	}
+
+	if _, ok := maskOrders[r]; !ok {
+		// mask(r) is not valid
+		return false
+	}
+
+	// main + sub + mask(r) is valid
+	c.mask = r
+	return true
 }
