@@ -1,6 +1,6 @@
 # telex-go
 
-Implement TELEX.
+Implement Telex.
 
 ## References
 
