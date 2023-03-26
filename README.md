@@ -11,3 +11,4 @@ Implement Telex.
 - [Vấn đề về IME trên Linux](https://viethung.space/blog/2020/07/21/Van-de-ve-IME-tren-Linux/)
 - [Chuyện gõ tiếng Việt trên Linux](https://notes.huy.rocks/posts/go-tieng-viet-linux.html)
 - [Quy tắc đặt dấu thanh trong tiếng Việt](http://vietlex.com/xu-li-ngon-ngu/28-Quy_tac_dat_dau_thanh_trong_tieng_Viet)
+- [Vietnamese Typing Utility](http://just.nicepeople.free.fr/Vietnamese-Typing.htm)
